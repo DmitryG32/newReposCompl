@@ -1,13 +1,60 @@
-let num = 266219;
-let sum = 1;
-let value;
+let lang = prompt("'ru' или 'en' ?");
+let langArr = [];
+let namePerson = prompt("Артем или Александр?", "Артем Александр");
 
-for (i = 0; i < num.toString().length; i++) {
-  value = num.toString().split("")[i];
-  sum = +value * sum;
+if (lang === "ru") {
+  console.log(
+    " Понедельник \n Вторник \n Среда \n Четверг \n Пятница \n Суббота \n Воскресенье"
+  );
+} else if (lang === "en") {
+  console.log(
+    " Monday \n Tuesday \n Wednesday \n Thursday \n Friday \n Saturday \n Sunday"
+  );
+} else {
+  console.log("Введено неверное значение");
 }
-console.log(sum);
 
-console.log(sum ** 3);
+switch (true) {
+  case lang === "ru":
+    console.log(
+      " Понедельник \n Вторник \n Среда \n Четверг \n Пятница \n Суббота \n Воскресенье"
+    );
+    break;
+  case lang === "en":
+    console.log(
+      " Monday \n Tuesday \n Wednesday \n Thursday \n Friday \n Saturday \n Sunday"
+    );
+    break;
 
-console.log((sum ** 3).toString().substring(0, 2));
+  default:
+    console.log("Введено неверное значение");
+    break;
+}
+
+langArr["ru"] = [
+  "Понедельник",
+  "Вторник",
+  "Среда",
+  "Четверг",
+  "Пятница",
+  "Суббота",
+  "Воскресенье",
+];
+langArr["en"] = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+console.log(langArr[lang]);
+
+let result =
+  namePerson === "Артем"
+    ? "Директор"
+    : "студент" && namePerson === "Александр"
+    ? "Препрдаватель"
+    : "студент";
+console.log(result);
