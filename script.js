@@ -1,60 +1,25 @@
-let lang = prompt("'ru' или 'en' ?");
-let langArr = [];
-let namePerson = prompt("Артем или Александр?", "Артем Александр");
+"use strict";
+let title = prompt("Название проекта");
+let newArr;
 
-if (lang === "ru") {
-  console.log(
-    " Понедельник \n Вторник \n Среда \n Четверг \n Пятница \n Суббота \n Воскресенье"
-  );
-} else if (lang === "en") {
-  console.log(
-    " Monday \n Tuesday \n Wednesday \n Thursday \n Friday \n Saturday \n Sunday"
-  );
-} else {
-  console.log("Введено неверное значение");
-}
+const func = function (str) {
+  if (str !== null) {
+    if (!isNaN(parseFloat(str)) && isFinite(str)) {
+      title = prompt("Передана не строка");
+      func(title);
+    } else {
+      title = title.trim().split("");
+      console.log(title);
+      if (title.length > 30) {
+        for (let i = title.length; i > 30; i--) {
+          delete title[i];
+        }
+        title = title.join("");
+      }
+      alert(title + "...");
+      console.log(typeof title, title.length, title);
+    }
+  }
+};
 
-switch (true) {
-  case lang === "ru":
-    console.log(
-      " Понедельник \n Вторник \n Среда \n Четверг \n Пятница \n Суббота \n Воскресенье"
-    );
-    break;
-  case lang === "en":
-    console.log(
-      " Monday \n Tuesday \n Wednesday \n Thursday \n Friday \n Saturday \n Sunday"
-    );
-    break;
-
-  default:
-    console.log("Введено неверное значение");
-    break;
-}
-
-langArr["ru"] = [
-  "Понедельник",
-  "Вторник",
-  "Среда",
-  "Четверг",
-  "Пятница",
-  "Суббота",
-  "Воскресенье",
-];
-langArr["en"] = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-console.log(langArr[lang]);
-
-let result =
-  namePerson === "Артем"
-    ? "Директор"
-    : "студент" && namePerson === "Александр"
-    ? "Препрдаватель"
-    : "студент";
-console.log(result);
+func(title);
