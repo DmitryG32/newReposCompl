@@ -1,6 +1,5 @@
 "use strict";
-//1
-/* let arr = {};
+let arr = {};
 
 for (let i = 0; i < 7; i++) {
   arr[i] = Math.random() * (1000 - 1) + 1;
@@ -12,9 +11,9 @@ for (let i = 0; i < 7; i++) {
   }
 }
 
-console.log("Весь массив", arr); */
+console.log("Весь массив", arr);
 
-/* function isPrime(num) {
+function isPrime(num) {
   for (let i = 2; i <= num; i++) {
     if (num % i === 0) {
       return false;
@@ -23,50 +22,44 @@ console.log("Весь массив", arr); */
   return num > 1;
 }
 
-function getPrimes(num) {
-  const primes = [];
+//2
+const numArr = [2];
+const falseArr = [];
+const newArr = [];
 
-  for (let i = 2; i <= num; i++) {
-    if (isPrime(i)) {
-      primes.push(i);
+//формирую начальный массив
+for (let i = 1; i < 101; i++) {
+  for (let j = 1; j <= i; j++) {
+    if (i % j == 0 && i % 2 !== 0) {
+      numArr.push(i);
     }
   }
-
-  return primes;
 }
 
-console.log(getPrimes(120)); */
-
-//function declaration
-// Можно запустить перед определением !!!
-testFunction();
-
-function testFunction(/* аргументы */) {
-  const x = 5;
-  const y = 5;
-  console.log(x + 5);
+//Нахожу те числа которые делились более чем 2 раза, т.е. не подходили под условия простого числа и пушу их в массив не подходящих чисел
+for (let i = 0; i < numArr.length; i++) {
+  if (numArr[i] == numArr[i + 2]) {
+    falseArr.push(numArr[i]);
+  }
 }
 
-/* Если надо сохранить значение переменнйо после отработки функции , то эту переменную надо указывать вне функции , или создавать кажыдй раз внутри функции
- Пр:  */
-
-let num = 9;
-
-function count() {
-  num++;
-  console.log(num);
+// Если число из начального массива совпадает с числом из массива неподходящих чисел, то такое число удаляю
+for (let i = 0; i < numArr.length; i++) {
+  for (let j = 0; j < falseArr.length; j++) {
+    if (numArr[i] === falseArr[j]) {
+      delete numArr[i];
+    }
+  }
 }
 
-count(); //10
-count(); //11
-count(); //12
-
-function coun2() {
-  let d = 9;
-  d++;
-  console.log(d);
+//Из массива подходящих чисел уладяю повторы и undefined и пушу в конечный массив
+for (let i = 0; i < numArr.length; i++) {
+  if (
+    numArr[i] !== numArr[i + 1] &&
+    numArr[i] !== 1 &&
+    numArr[i] !== undefined
+  ) {
+    console.log("Число: ", numArr[i], "делится на", 1, "и на", numArr[i]);
+    newArr.push(numArr[i]);
+  }
 }
-
-coun2();
-coun2();
-coun2();
