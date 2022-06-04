@@ -1,0 +1,31 @@
+body{
+  background-color:  #020609 ;
+  color: #bfecfa;
+}
+.timer__inner{
+  width:100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer__top{
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+.timer__numbers{
+  font-size: 57px;
+}
+
+.timer__numbers-hours::after, .timer__numbers-minutes::after {
+  content: ':'  
+}
+
+.timer__numbers-day::after,
+.timer__numbers-month::after{
+  content: '.'
+}
